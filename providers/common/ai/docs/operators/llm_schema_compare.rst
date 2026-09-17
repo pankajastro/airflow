@@ -63,7 +63,10 @@ With Object Storage
 Use ``data_sources`` with
 :class:`~airflow.providers.common.sql.config.DataSourceConfig` to include
 object-storage sources (S3 Parquet, CSV, Iceberg, etc.) in the comparison.
-These can be freely combined with ``db_conn_ids``:
+These can be freely combined with ``db_conn_ids``. A ``DataSourceConfig``
+with neither ``uri`` nor ``format`` set is introspected via ``DbApiHook``
+instead of DataFusion, so plain database connections can also be passed
+through ``data_sources``:
 
 .. exampleinclude:: /../../ai/src/airflow/providers/common/ai/example_dags/example_llm_schema_compare.py
     :language: python
@@ -184,8 +187,8 @@ Parameters
 - ``db_conn_ids``: List of database connection IDs to compare. Each must resolve
   to a ``DbApiHook``.
 - ``table_names``: Tables to introspect from each ``db_conn_id``.
-- ``data_sources``: List of ``DataSourceConfig`` objects for object-storage or
-  catalog-managed sources.
+- ``data_sources``: List of ``DataSourceConfig`` objects for object-storage,
+  catalog-managed, or plain database (no ``uri``/``format``) sources.
 - ``context_strategy``: To fetch primary keys, foreign keys, and indexes.``full`` or ``basic``,
   strongly recommended for cross-system comparisons. default is ``full``
 - ``require_approval``: If ``True``, the task pauses after the comparison and

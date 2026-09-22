@@ -1,6 +1,6 @@
 
 #
-# This constraints file was automatically generated on 2026-09-22T08:55:02.930794
+# This constraints file was automatically generated on 2026-09-22T13:23:20.137789
 # via `uv pip install --resolution highest` for the "main" branch of Airflow.
 # This variant of constraints install uses the HEAD of the branch version for 'apache-airflow' but installs
 # the providers from PIP-released packages at the moment of the constraint generation.
@@ -108,7 +108,7 @@ asyncssh==2.24.0
 atlasclient==1.0.0
 atlassian-python-api==5.0.5
 attrs==26.1.0
-azure-ai-projects==2.4.0
+azure-ai-projects==2.6.1
 azure-batch==15.1.0
 azure-common==1.1.28
 azure-core==1.41.0
@@ -392,7 +392,7 @@ msgspec==0.21.1
 msrest==0.7.1
 msrestazure==0.6.4.post1
 multi_key_dict==2.0.3
-multidict==6.8.0
+multidict==6.9.0
 mypy_extensions==1.1.0
 mysql-connector-python==26.7.0
 mysqlclient==2.3.0
@@ -460,9 +460,9 @@ propcache==0.5.4
 proto-plus==1.28.4
 protobuf==6.33.6
 psutil==7.2.2
-psycopg-binary==3.3.5
+psycopg-binary==3.3.6
 psycopg2-binary==2.9.13
-psycopg==3.3.5
+psycopg==3.3.6
 ptyprocess==0.7.0
 pure-sasl==0.6.2
 pure_eval==0.2.4

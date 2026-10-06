@@ -56,7 +56,7 @@ Before running:
    ``LLM_CONN_ID``) for your chosen model provider.
 2. Place the cleaned survey CSV at the path set by ``SURVEY_CSV_PATH``.
 
-This DAG needs the optional ``sql`` extra::
+This Dag needs the optional ``sql`` extra::
 
     pip install "apache-airflow-providers-common-ai[sql]"
 """
@@ -139,7 +139,7 @@ Focus on patterns and proportions rather than raw counts."""
 
 
 # ---------------------------------------------------------------------------
-# DAG: Agentic multi-query synthesis
+# Dag: Agentic multi-query synthesis
 # ---------------------------------------------------------------------------
 
 if LLMSQLQueryOperator is not None:
@@ -264,7 +264,7 @@ Results: {{ ti.xcom_pull(task_ids='collect_results') }}""",
         collected >> synthesize_answer
 
         # ------------------------------------------------------------------
-        # Step 7: Human reviews the synthesized narrative before the DAG ends.
+        # Step 7: Human reviews the synthesized narrative before the Dag ends.
         # ------------------------------------------------------------------
         result_confirmation = ApprovalOperator(  # noqa: F841
             task_id="result_confirmation",

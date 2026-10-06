@@ -77,7 +77,7 @@ class LLMBranchOperator(LLMOperator, BranchMixIn):
     """
     Ask an LLM to choose which downstream task(s) to execute.
 
-    Downstream task IDs are discovered automatically from the DAG topology
+    Downstream task IDs are discovered automatically from the Dag topology
     and presented to the LLM as a constrained enum via pydantic-ai structured
     output. No text parsing or manual validation is needed.
 

@@ -14,9 +14,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating LlamaIndexHook + LlamaIndex operator usage.
+"""Example Dags demonstrating LlamaIndexHook + LlamaIndex operator usage.
 
-Each DAG covers a single pattern. The docs reference these via
+Each Dag covers a single pattern. The docs reference these via
 ``.. exampleinclude::`` so the runnable snippets stay in sync.
 """
 

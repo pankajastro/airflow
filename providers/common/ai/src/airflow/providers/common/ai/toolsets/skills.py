@@ -23,8 +23,8 @@ via ``toolsets=`` or used directly with a ``pydantic_ai.Agent`` anywhere the
 Airflow connection backend is reachable (i.e. inside a worker/task runtime).
 
 Skill sources are resolved lazily when the agent enters the toolset (run time,
-on the worker), never at DAG-parse time, so a Git token resolved from an Airflow
-connection is never baked into the serialized DAG. Cloned repositories are
+on the worker), never at Dag-parse time, so a Git token resolved from an Airflow
+connection is never baked into the serialized Dag. Cloned repositories are
 removed when the toolset context exits.
 """
 
@@ -104,7 +104,7 @@ class AgentSkillsToolset(AbstractToolset):
         )
 
     async def __aenter__(self) -> AgentSkillsToolset:
-        # Resolve + clone at run time, on the worker -- not at DAG-parse time.
+        # Resolve + clone at run time, on the worker -- not at Dag-parse time.
         try:
             from pydantic_ai_skills import SkillsToolset
         except ImportError as e:

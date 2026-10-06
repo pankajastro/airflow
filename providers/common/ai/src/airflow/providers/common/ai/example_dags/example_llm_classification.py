@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAG: classify pipeline incidents by severity using @task.llm with Literal output."""
+"""Example Dag: classify pipeline incidents by severity using @task.llm with Literal output."""
 
 from __future__ import annotations
 
@@ -43,8 +43,8 @@ def example_llm_classification():
 
     classify_incident(
         "Scheduler heartbeat lost for 15 minutes. "
-        "Multiple DAG runs stuck in queued state. "
-        "No new tasks being scheduled across all DAGs."
+        "Multiple Dag runs stuck in queued state. "
+        "No new tasks being scheduled across all Dags."
     )
 
 

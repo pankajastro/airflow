@@ -14,13 +14,13 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating RAG pipelines with LlamaIndex operators.
+"""Example Dags demonstrating RAG pipelines with LlamaIndex operators.
 
 Three patterns:
 
-1. Full RAG pipeline -- load -> embed -> retrieve -> answer in one DAG.
-2. Separate index/query DAGs -- production-shaped split (scheduled
-   indexing job + on-demand query DAG).
+1. Full RAG pipeline -- load -> embed -> retrieve -> answer in one Dag.
+2. Separate index/query Dags -- production-shaped split (scheduled
+   indexing job + on-demand query Dag).
 3. Multi-source RAG -- combine multiple loaders with source metadata.
 
 The ``LLMOperator`` synthesis step uses a ``pydanticai_default`` connection
@@ -45,7 +45,7 @@ from airflow.providers.common.compat.sdk import dag, task
 # [START howto_llamaindex_rag_pipeline]
 @dag(schedule=None, tags=["example"])
 def example_llamaindex_rag_pipeline():
-    """End-to-end RAG pipeline in a single DAG.
+    """End-to-end RAG pipeline in a single Dag.
 
     1. Parse local text files into document dicts.
     2. Chunk and embed the documents, persisting the index to disk.
@@ -111,9 +111,9 @@ example_llamaindex_rag_pipeline()
 # [START howto_llamaindex_index_dag]
 @dag(schedule="@weekly", tags=["example"])
 def example_llamaindex_index_pdf():
-    """Weekly indexing DAG -- keep the vector index fresh as PDFs arrive.
+    """Weekly indexing Dag -- keep the vector index fresh as PDFs arrive.
 
-    The companion query DAG (below) reads the persisted index on demand.
+    The companion query Dag (below) reads the persisted index on demand.
     """
     load = DocumentLoaderOperator(
         task_id="load_pdfs",
@@ -145,7 +145,7 @@ example_llamaindex_index_pdf()
     tags=["example"],
 )
 def example_llamaindex_query():
-    """On-demand query DAG -- retrieve from a pre-built index and synthesize.
+    """On-demand query Dag -- retrieve from a pre-built index and synthesize.
 
     Trigger manually or via API with a ``question`` parameter.
     """

@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating pydantic-ai capabilities on ``AgentOperator``.
+"""Example Dags demonstrating pydantic-ai capabilities on ``AgentOperator``.
 
 Capabilities (https://ai.pydantic.dev/capabilities/) are pydantic-ai's
 composable units for thinking, web search, image generation, MCP, and more.

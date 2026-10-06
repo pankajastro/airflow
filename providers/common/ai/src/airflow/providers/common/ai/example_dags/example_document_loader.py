@@ -14,9 +14,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating DocumentLoaderOperator usage patterns.
+"""Example Dags demonstrating DocumentLoaderOperator usage patterns.
 
-Each DAG covers a single pattern. The hook docs reference these via
+Each Dag covers a single pattern. The hook docs reference these via
 ``.. exampleinclude::`` so the runnable snippets stay in sync.
 """
 

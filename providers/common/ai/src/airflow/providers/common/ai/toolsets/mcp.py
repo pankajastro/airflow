@@ -44,7 +44,7 @@ class MCPToolset(AirflowToolset):
 
     This is the recommended way to use MCP servers in Airflow — it stores
     server configuration in Airflow connections (and secret backends) rather
-    than hard-coding URLs and credentials in DAG code.
+    than hard-coding URLs and credentials in Dag code.
 
     If you prefer full PydanticAI control, you can pass a
     :class:`~pydantic_ai.mcp.MCPToolset` (built over a FastMCP transport)

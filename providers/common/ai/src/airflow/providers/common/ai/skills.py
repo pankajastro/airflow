@@ -36,7 +36,7 @@ binding. For other frameworks, resolve the directories yourself::
         agent = Agent(plugins=[AgentSkills(skills=dirs)])
 
 Resolution (connection lookup, clone) happens when ``resolve_skills`` is entered,
-so run it inside the task, not at module import / DAG-parse time. The context
+so run it inside the task, not at module import / Dag-parse time. The context
 manager removes any cloned directories on exit.
 """
 
@@ -84,7 +84,7 @@ class GitSkills:
 
         Skill bundles can contain scripts an agent may run on the worker. Because
         the repository is fetched at run time, anyone who can modify it can
-        introduce code that runs in your environment, outside DAG review. Point
+        introduce code that runs in your environment, outside Dag review. Point
         ``repo_url`` at a trusted repository and pin ``branch`` to a trusted ref.
     """
 
@@ -117,7 +117,7 @@ def _clone_git(source: GitSkills) -> tuple[str, str]:
         ) from e
 
     # Reject credentials embedded directly in the URL: they would be stored in
-    # the serialized DAG, written back into .git/config by the scrub below, and
+    # the serialized Dag, written back into .git/config by the scrub below, and
     # leak into error messages. Credentials must come from ``conn_id`` instead.
     split = urlsplit(source.repo_url)
     if split.username or split.password:

@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAG: triage support tickets with @task.llm, structured output, and dynamic task mapping."""
+"""Example Dag: triage support tickets with @task.llm, structured output, and dynamic task mapping."""
 
 from __future__ import annotations
 
@@ -54,7 +54,7 @@ def example_llm_analysis_pipeline():
             ),
             (
                 "After upgrading to the latest version, the Grid view takes over "
-                "30 seconds to load for DAGs with more than 500 tasks. "
+                "30 seconds to load for Dags with more than 500 tasks. "
                 "Previously it loaded in under 5 seconds."
             ),
         ]

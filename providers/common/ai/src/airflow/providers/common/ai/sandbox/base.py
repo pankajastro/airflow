@@ -152,11 +152,11 @@ class SandboxSpec:
 
     Passed to :meth:`SandboxBackend.create`. Every field is optional and a
     backend may not be able to honor all of them; a backend that cannot enforce
-    a field it was given must raise rather than silently ignore it, so a DAG
+    a field it was given must raise rather than silently ignore it, so a Dag
     author never believes a restriction is in force when it is not.
 
     :param env: Environment variables to set inside the sandbox. Airflow never
-        populates this itself -- the DAG author decides what, if anything, the
+        populates this itself -- the Dag author decides what, if anything, the
         sandbox is given. Anything placed here is visible to model-generated
         code, so scope it to what that code legitimately needs.
     :param block_network: Deny all outbound network access. Defaults to ``True``:

@@ -18,7 +18,7 @@
 TaskFlow decorator for LLM-driven branching.
 
 The user writes a function that **returns the prompt string**. The decorator
-discovers downstream tasks from the DAG topology and asks the LLM to choose
+discovers downstream tasks from the Dag topology and asks the LLM to choose
 which branch(es) to execute using pydantic-ai structured output.
 """
 
@@ -111,7 +111,7 @@ def llm_branch_task(
     Wrap a function that returns a prompt into an LLM-driven branching task.
 
     The function body constructs the prompt. The decorator discovers downstream
-    tasks from the DAG topology and asks the LLM to choose which branch(es)
+    tasks from the Dag topology and asks the LLM to choose which branch(es)
     to execute.
 
     Usage::

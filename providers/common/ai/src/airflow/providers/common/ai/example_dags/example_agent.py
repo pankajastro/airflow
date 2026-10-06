@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating AgentOperator, @task.agent, and toolsets."""
+"""Example Dags demonstrating AgentOperator, @task.agent, and toolsets."""
 
 from __future__ import annotations
 
@@ -302,7 +302,7 @@ if SQLToolset is not None and CodeMode is not None:
 
 
 # ---------------------------------------------------------------------------
-# 8. Multi-turn session — resume a conversation across DAG runs
+# 8. Multi-turn session — resume a conversation across Dag runs
 # ---------------------------------------------------------------------------
 
 
@@ -313,7 +313,7 @@ def example_agent_session():
 
     The agent step seeds itself with the prior transcript and re-emits the
     updated transcript to XCom (key ``message_history``). Loading and storing
-    that transcript under a session key is the DAG's job -- here, a JSON file in
+    that transcript under a session key is the Dag's job -- here, a JSON file in
     object storage keyed by ``session_id``. Swap the path for ``s3://`` /
     ``gs://`` in a deployment.
     """

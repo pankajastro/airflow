@@ -17,7 +17,7 @@
 """
 Natural language analysis of a survey CSV -- interactive and scheduled variants.
 
-Both DAGs query the `Airflow Community Survey 2025
+Both Dags query the `Airflow Community Survey 2025
 <https://airflow.apache.org/survey/>`__ CSV using
 :class:`~airflow.providers.common.ai.operators.llm_sql.LLMSQLQueryOperator`
 and :class:`~airflow.providers.common.sql.operators.analytics.AnalyticsOperator`.
@@ -31,7 +31,7 @@ ApprovalOperator.
 validates its schema, generates and executes SQL, then emails or logs the result.
 No human review steps -- suitable for recurring reporting or dashboards.
 
-Before running either DAG:
+Before running either Dag:
 
 1. Create an LLM connection named ``pydanticai_default`` (or the value of
    ``LLM_CONN_ID`` below) for your chosen model provider.
@@ -40,7 +40,7 @@ Before running either DAG:
    A cleaned copy of the 2025 survey CSV (duplicate columns renamed, embedded
    newlines removed) is required -- Apache DataFusion is strict about these.
 
-These DAGs need the optional ``sql`` extra::
+These Dags need the optional ``sql`` extra::
 
     pip install "apache-airflow-providers-common-ai[sql]"
 """
@@ -72,7 +72,7 @@ except Exception:
 # LLM provider connection (OpenAI, Anthropic, Vertex AI, etc.)
 LLM_CONN_ID = "pydanticai_default"
 
-# HTTP connection pointing at https://airflow.apache.org (scheduled DAG only).
+# HTTP connection pointing at https://airflow.apache.org (scheduled Dag only).
 # Create a connection with host=https://airflow.apache.org, no auth required.
 AIRFLOW_WEBSITE_CONN_ID = "airflow_website"
 
@@ -87,24 +87,24 @@ SURVEY_CSV_PATH = os.environ.get(
 )
 SURVEY_CSV_URI = f"file://{SURVEY_CSV_PATH}"
 
-# Path where the reference schema CSV is written at runtime (scheduled DAG only).
+# Path where the reference schema CSV is written at runtime (scheduled Dag only).
 REFERENCE_CSV_PATH = os.environ.get(
     "REFERENCE_CSV_PATH",
     "/opt/airflow/data/airflow-user-survey-2025-reference.csv",
 )
 REFERENCE_CSV_URI = f"file://{REFERENCE_CSV_PATH}"
 
-# SMTP connection for the result notification step (scheduled DAG only).
+# SMTP connection for the result notification step (scheduled Dag only).
 # Set to None to skip email and log the result instead.
 SMTP_CONN_ID = os.environ.get("SMTP_CONN_ID", None)
 NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", None)
 
-# Default question for the interactive DAG -- the human can edit it in the first HITL step.
+# Default question for the interactive Dag -- the human can edit it in the first HITL step.
 INTERACTIVE_PROMPT = (
     "How does AI tool usage for writing Airflow code compare between Airflow 3 users and Airflow 2 users?"
 )
 
-# Fixed question for the scheduled DAG -- runs unattended on every trigger.
+# Fixed question for the scheduled Dag -- runs unattended on every trigger.
 SCHEDULED_PROMPT = "What is the breakdown of respondents by Airflow version currently in use?"
 
 # Schema context for LLMSQLQueryOperator.
@@ -148,7 +148,7 @@ reference_datasource = DataSourceConfig(
 
 
 # ---------------------------------------------------------------------------
-# DAG 1: Interactive survey question example
+# Dag 1: Interactive survey question example
 # ---------------------------------------------------------------------------
 
 if LLMSQLQueryOperator is not None:
@@ -238,7 +238,7 @@ if LLMSQLQueryOperator is not None:
     example_llm_survey_interactive()
 
     # ---------------------------------------------------------------------------
-    # DAG 2: Scheduled survey question example
+    # Dag 2: Scheduled survey question example
     # ---------------------------------------------------------------------------
 
     # [START example_llm_survey_scheduled]

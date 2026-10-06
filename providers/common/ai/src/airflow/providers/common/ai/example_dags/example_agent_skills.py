@@ -14,16 +14,16 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating Agent Skills with ``AgentOperator``.
+"""Example Dags demonstrating Agent Skills with ``AgentOperator``.
 
 `Agent Skills <https://agentskills.io>`__ are ``SKILL.md`` bundles the model
 discovers and loads on demand (progressive disclosure). They are passed to the
 agent as an ``AgentSkillsToolset`` in the operator's ``toolsets=`` list. Skill
-sources are resolved when the task runs, on the worker (not while the DAG
+sources are resolved when the task runs, on the worker (not while the Dag
 processor parses the file), so a Git token resolved from an Airflow connection
-is never baked into the serialized DAG.
+is never baked into the serialized Dag.
 
-These DAGs need the optional ``skills`` extra::
+These Dags need the optional ``skills`` extra::
 
     pip install "apache-airflow-providers-common-ai[skills]"
 """
@@ -42,7 +42,7 @@ try:
 except Exception:
     SQLToolset = None  # type: ignore[assignment,misc]
 
-# Skills ship next to this DAG file; resolve relative to __file__ so the path
+# Skills ship next to this Dag file; resolve relative to __file__ so the path
 # holds regardless of the dag-processor's working directory.
 SKILLS_DIR = Path(__file__).parent / "skills"
 
@@ -81,7 +81,7 @@ if SQLToolset is not None:
 # 2. Remote skills from a Git repo, credentials from an Airflow connection
 # ---------------------------------------------------------------------------
 # ``github_skills`` is a git connection (HTTPS token in the password, or an SSH
-# key in the extra). The DAG only references it by id; no credential is inlined.
+# key in the extra). The Dag only references it by id; no credential is inlined.
 
 
 # [START howto_operator_agent_skills_git]

@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-Example DAG demonstrating LLM-powered retry policies.
+Example Dag demonstrating LLM-powered retry policies.
 
 ``llm_policy`` is the plain form: a text model classifies the failure and decides whether to
 retry and how long to wait, guided by its instructions. ``patient_policy`` and the
@@ -171,5 +171,5 @@ try:
 
     example_llm_retry_policy_classifier()
 except ImportError:
-    # RetryPolicy requires Airflow 3.3+; example DAG is skipped on older versions.
+    # RetryPolicy requires Airflow 3.3+; example Dag is skipped on older versions.
     pass

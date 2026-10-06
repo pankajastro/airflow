@@ -85,7 +85,7 @@ if AIRFLOW_V_3_3_PLUS:
 
 try:
     # See LLMOperator: Newer ``apache-airflow-task-sdk`` versions register declared ``output_type`` classes
-    # from a worker-side DAG walk, so the model instance flows through XCom; older
+    # from a worker-side Dag walk, so the model instance flows through XCom; older
     # ``apache-airflow-task-sdk`` versions without the walk dump to a dict instead.
     from airflow.sdk.serde import SUPPORTS_OPERATOR_DESERIALIZATION_WALKER as _CORE_WALKER
 except ImportError:  # pragma: no cover - missing ``apache-airflow-task-sdk`` walker
@@ -356,7 +356,7 @@ class AgentOperator(CancellableAgentRunMixin, BaseOperator, HITLReviewMixin):
         ``[]`` / ``""`` starts a fresh session), the full transcript after the run
         -- ``result.all_messages()`` -- is pushed to XCom under the key
         ``message_history`` so the next run can resume. Persisting that transcript
-        under a session key (e.g. in object storage) is the DAG's responsibility.
+        under a session key (e.g. in object storage) is the Dag's responsibility.
         The transcript is cumulative and grows each turn; for long sessions use an
         object-storage XCom backend or trim old turns. Not supported together with
         ``enable_hitl_review`` (raises) -- the post-review transcript is not yet
@@ -480,7 +480,7 @@ class AgentOperator(CancellableAgentRunMixin, BaseOperator, HITLReviewMixin):
         self.output_type = output_type
         self.serialize_output = serialize_output
         # See LLMOperator: instance flows when Airflow registers ``output_type``
-        # via its worker-side DAG walk; otherwise (or on opt-in) dump to a dict.
+        # via its worker-side Dag walk; otherwise (or on opt-in) dump to a dict.
         self._serialize_model_output = serialize_output or not _CORE_WALKER
         self.toolsets = toolsets
         self.enable_tool_logging = enable_tool_logging

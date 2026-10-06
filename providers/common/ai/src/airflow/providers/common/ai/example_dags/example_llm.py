@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating LLMOperator and @task.llm usage."""
+"""Example Dags demonstrating LLMOperator and @task.llm usage."""
 
 from __future__ import annotations
 

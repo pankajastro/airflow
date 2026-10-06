@@ -14,9 +14,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating LangChainHook usage patterns.
+"""Example Dags demonstrating LangChainHook usage patterns.
 
-Each DAG covers a single pattern: chat-only, embedding-only, dual chat +
+Each Dag covers a single pattern: chat-only, embedding-only, dual chat +
 embedding, and separate connections for chat and embeddings. For a richer
 end-to-end demo (ReAct agent, HITL review, vector retrieval), see
 ``example_langchain_tool_agent.py``.
@@ -66,7 +66,7 @@ def example_langchain_embedding():
     embed_documents(
         [
             "Apache Airflow is a workflow orchestrator.",
-            "Workflows are defined as Python DAGs.",
+            "Workflows are defined as Python Dags.",
         ]
     )
 

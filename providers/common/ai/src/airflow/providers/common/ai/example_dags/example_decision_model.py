@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-Example DAG using a decision model to route an incident.
+Example Dag using a decision model to route an incident.
 
 A decision model answers typed questions and cannot write text, so it suits a branch
 (pick one of these task ids) and a classification (pick one of these labels), and nothing

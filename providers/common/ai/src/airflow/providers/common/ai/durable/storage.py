@@ -61,9 +61,9 @@ class DurableStorage:
     The file survives Airflow task retries since it lives outside the
     XCom system.  It is deleted on successful task completion.
 
-    :param dag_id: DAG ID of the running task.
+    :param dag_id: Dag ID of the running task.
     :param task_id: Task ID of the running task.
-    :param run_id: DAG run ID.
+    :param run_id: Dag run ID.
     :param map_index: Map index for mapped tasks (``-1`` for non-mapped).
     """
 

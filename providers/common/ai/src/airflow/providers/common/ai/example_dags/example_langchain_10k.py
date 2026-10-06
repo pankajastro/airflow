@@ -28,7 +28,7 @@ required) using stock ticker symbols.  Any US publicly-traded company
 is supported -- configure via the ``tickers`` Dag parameter.
 
 This is the LangChain counterpart to ``example_llamaindex_10k.py``.
-Both share the same DAG shape (decompose -> fan-out retrieval -> collect
+Both share the same Dag shape (decompose -> fan-out retrieval -> collect
 -> synthesize -> approve) and the same live SEC EDGAR data source,
 demonstrating that the framework choice is a swappable implementation
 detail while Airflow provides the orchestration.
@@ -80,7 +80,7 @@ The LlamaIndex example uses ``LlamaIndexEmbeddingOperator`` and
 and retrieval are plain ``@task`` functions that call LangChain's FAISS
 and RecursiveCharacterTextSplitter directly via ``LangChainHook``,
 because LangChain does not yet have dedicated Airflow operators.  The
-DAG shape is identical; the operator-vs-task distinction is the only
+Dag shape is identical; the operator-vs-task distinction is the only
 structural difference.
 
 Before running:
@@ -282,7 +282,7 @@ DEFAULT_QUESTION = (
 )
 
 # =========================================================================
-# DAG 1: Fetch and index filings (scheduled)
+# Dag 1: Fetch and index filings (scheduled)
 # =========================================================================
 
 
@@ -362,7 +362,7 @@ example_langchain_10k_index()
 
 
 # =========================================================================
-# DAG 2: Analyst query pipeline (on-demand)
+# Dag 2: Analyst query pipeline (on-demand)
 # =========================================================================
 
 

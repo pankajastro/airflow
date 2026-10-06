@@ -17,7 +17,7 @@
 """
 AIP progress tracker -- two approaches to the same problem with common.ai.
 
-This file contains **two DAGs** that solve the same use case -- tracking
+This file contains **two Dags** that solve the same use case -- tracking
 Airflow Improvement Proposal implementation progress -- using different
 architectural patterns. Comparing them illustrates the tradeoff between
 deterministic control and agent autonomy.
@@ -52,7 +52,7 @@ output → AI validation → arithmetic correction) to prevent hallucination.
 The agent loads the ``aip-tracker`` skill (an `agentskills.io
 <https://agentskills.io>`__ ``SKILL.md`` bundle) which teaches it how to
 assess AIP progress. Custom tools give it access to Confluence and GitHub
-APIs. The agent decides its own evidence-gathering strategy -- simpler DAG,
+APIs. The agent decides its own evidence-gathering strategy -- simpler Dag,
 but less control over accuracy.
 
 **When to use which:**
@@ -63,15 +63,15 @@ but less control over accuracy.
   skill instructions, or when the problem is too open-ended for a fixed
   pipeline.
 
-Before running either DAG:
+Before running either Dag:
 
 1. Create an LLM connection named ``pydanticai_default`` (or the value of
    ``LLM_CONN_ID``) for your chosen model provider.
 2. Optionally set a ``GITHUB_TOKEN`` environment variable for higher API
    rate limits (unauthenticated: 10 req/min; authenticated: 5,000 req/hr).
-3. Trigger the DAG with the default ``aip_numbers`` param or edit it to
+3. Trigger the Dag with the default ``aip_numbers`` param or edit it to
    choose which AIPs to investigate.
-4. The agent DAG requires the ``skills`` extra:
+4. The agent Dag requires the ``skills`` extra:
    ``pip install "apache-airflow-providers-common-ai[skills]"``.
 """
 
@@ -407,7 +407,7 @@ all claims are grounded."""
 
 
 # ---------------------------------------------------------------------------
-# DAG
+# Dag
 # ---------------------------------------------------------------------------
 
 
@@ -737,7 +737,7 @@ def example_aip_progress_tracker():
     # ------------------------------------------------------------------
     # Step 8: Synthesize a cross-AIP progress report.
     # UsageLimits caps the token spend so a runaway prompt cannot
-    # exhaust the API budget in a single DAG run.
+    # exhaust the API budget in a single Dag run.
     # ------------------------------------------------------------------
     # [START aip_tracker_synthesis]
     synthesize = LLMOperator(
@@ -912,7 +912,7 @@ Flag any claims not grounded in the evidence.
     review_body = build_review_body(validated)
 
     # ------------------------------------------------------------------
-    # Step 12: A maintainer reviews the corrected report.  The DAG
+    # Step 12: A maintainer reviews the corrected report.  The Dag
     # pauses here until the human approves, requests changes, or the
     # timeout expires.
     # ------------------------------------------------------------------
@@ -932,7 +932,7 @@ example_aip_progress_tracker()
 
 
 # ===========================================================================
-# DAG 2: Agent-based AIP tracker (AgentOperator + AgentSkillsToolset)
+# Dag 2: Agent-based AIP tracker (AgentOperator + AgentSkillsToolset)
 #
 # Same use case, different architecture.  Instead of a 12-task deterministic
 # pipeline, a single AgentOperator with the aip-tracker skill loaded via

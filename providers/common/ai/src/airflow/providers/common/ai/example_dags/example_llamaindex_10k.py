@@ -254,7 +254,7 @@ DEFAULT_QUESTION = (
 )
 
 # =========================================================================
-# DAG 1: Fetch and index filings (scheduled)
+# Dag 1: Fetch and index filings (scheduled)
 # =========================================================================
 
 
@@ -319,7 +319,7 @@ example_llamaindex_10k_index()
 
 
 # =========================================================================
-# DAG 2: Analyst query pipeline (on-demand)
+# Dag 2: Analyst query pipeline (on-demand)
 # =========================================================================
 
 

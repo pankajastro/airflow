@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Example DAGs demonstrating MCP server integration with AgentOperator."""
+"""Example Dags demonstrating MCP server integration with AgentOperator."""
 
 from __future__ import annotations
 
@@ -99,7 +99,7 @@ example_mcp_multiple_servers()
 # For local stdio MCP servers that read credentials from their own environment
 # (e.g. a server that needs a Splunk API key), pass env_provider instead of
 # storing the secret in the connection's static Extra.env. It is resolved at
-# task-execution time -- never baked into the serialized DAG -- and merged
+# task-execution time -- never baked into the serialized Dag -- and merged
 # over Extra.env, with env_provider's keys winning on conflicts. Here the
 # secret lives in a *different* connection (the Splunk one, not this MCP
 # server's own connection) -- something a static Extra.env cannot express.

@@ -107,7 +107,7 @@ SAMPLE_DOCUMENTS = {
         "Apache Airflow is an open-source platform for programmatically authoring, "
         "scheduling, and monitoring workflows. Originally created at Airbnb in 2014, "
         "it graduated from the Apache Incubator in 2019. Airflow uses directed acyclic "
-        "graphs (DAGs) to define workflows as Python code, making pipelines versionable, "
+        "graphs (Dags) to define workflows as Python code, making pipelines versionable, "
         "testable, and collaborative. The scheduler executes tasks on workers following "
         "the defined dependencies. Airflow is widely used for ETL/ELT pipelines, ML model "
         "training orchestration, and data warehouse management. As of Airflow 3.0, workers "
@@ -377,7 +377,7 @@ def _build_tools(hook, index_dir: str, survey_csv_path: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# DAG: ReAct tool-calling agent with human review
+# Dag: ReAct tool-calling agent with human review
 # ---------------------------------------------------------------------------
 
 
@@ -401,7 +401,7 @@ def example_langchain_tool_agent():
     based on the user's question.  The number and sequence of tool calls
     is determined by the LLM at runtime.
 
-    The surrounding Airflow DAG provides what the agent cannot:
+    The surrounding Airflow Dag provides what the agent cannot:
     human review of the question (HITLEntryOperator), formatted report
     generation (LLMOperator), and human approval of the final output
     (ApprovalOperator).

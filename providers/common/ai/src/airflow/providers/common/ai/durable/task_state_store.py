@@ -61,7 +61,7 @@ class TaskStateStoreDurableStorage:
     config, and the keys this run touched are deleted on successful completion.
 
     A run that fails permanently leaves its keys behind (``NEVER_EXPIRE`` skips
-    garbage collection); they are removed when the DAG run is cleaned up, since
+    garbage collection); they are removed when the Dag run is cleaned up, since
     task state store rows cascade with the run.
 
     :param accessor: The task state store accessor for the current task
@@ -72,7 +72,7 @@ class TaskStateStoreDurableStorage:
         self._store = accessor
         # Keys written or replayed this run, deleted on cleanup. A divergent
         # retry that takes fewer steps may orphan keys from a longer earlier
-        # attempt; those are reclaimed by the DAG-run cascade, not here.
+        # attempt; those are reclaimed by the Dag-run cascade, not here.
         self._keys: set[str] = set()
 
     def save_model_response(self, key: str, response: ModelResponse, *, fingerprint: str | None) -> bool:
@@ -181,7 +181,7 @@ class TaskStateStoreDurableStorage:
         for key in self._keys:
             # Runs only after the task has already succeeded, so it must never raise
             # (that would fail a succeeded task). A key left behind by a failed delete
-            # is reclaimed by the DAG-run cascade -- hence the deliberately broad catch.
+            # is reclaimed by the Dag-run cascade -- hence the deliberately broad catch.
             # Log it so an offloaded value orphaned in external storage is at least visible.
             try:
                 self._store.delete(key)

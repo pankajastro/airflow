@@ -52,7 +52,7 @@ from airflow.providers.common.compat.version_compat import AIRFLOW_V_3_1_PLUS
 from airflow.providers.standard.exceptions import HITLRejectException, HITLTimeoutError
 
 try:
-    # The worker-side DAG walk registers operator-declared ``output_type`` classes
+    # The worker-side Dag walk registers operator-declared ``output_type`` classes
     # for XCom deserialization. ``apache-airflow-task-sdk`` versions with this walk
     # send model instances unchanged; older versions dump them to a dict instead.
     from airflow.sdk.serde import SUPPORTS_OPERATOR_DESERIALIZATION_WALKER as _CORE_WALKER
@@ -83,7 +83,7 @@ class LLMOperator(CancellableAgentRunMixin, BaseOperator, LLMApprovalMixin):
     the model instance is returned to XCom unchanged so downstream tasks can
     type-hint it directly (e.g. ``def downstream(result: MyModel) -> None``).
     The class is auto-registered for deserialization in each process that parses
-    the DAG, so no edit to ``[core] allowed_deserialization_classes`` is required.
+    the Dag, so no edit to ``[core] allowed_deserialization_classes`` is required.
     The Pydantic class must be defined at module scope: classes nested inside
     a function or ``@dag``-decorated body cannot be deserialized from XCom.
 
@@ -225,7 +225,7 @@ class LLMOperator(CancellableAgentRunMixin, BaseOperator, LLMApprovalMixin):
         self.output_type = output_type
         self.serialize_output = serialize_output
         # Return the Pydantic instance when ``apache-airflow-task-sdk`` can register ``output_type``
-        # for deserialization (its worker-side DAG walk); otherwise, or when the
+        # for deserialization (its worker-side Dag walk); otherwise, or when the
         # user opts in, dump to a dict so the value is deserializable anywhere.
         self._serialize_model_output = serialize_output or not _CORE_WALKER
         self.agent_params = agent_params or {}
